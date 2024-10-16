@@ -13,4 +13,4 @@ export const hashPass = async (password) => {
 
 export const comparePass = async (password, hashedPass) => {
     return bcrypt.compare(password, hashedPass);
-};
+}; 

@@ -26,7 +26,7 @@ const Orders = () => {
   ]);
 
   return (
-    <Layout>
+    <Layout title={"Yours Orders"}>
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="orders-container w-100 p-4">
         <h2 className="mb-4 text-center">Your Orders</h2>

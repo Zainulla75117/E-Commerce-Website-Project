@@ -37,7 +37,7 @@ const Cart = () => {
   };
 
   return (
-    <Layout>
+    <Layout title={"Shopping Cart"} >
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="cart-container text-center">
         <h2>Your Cart</h2>

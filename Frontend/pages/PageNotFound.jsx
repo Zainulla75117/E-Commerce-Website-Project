@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Layout from '../src/components/Layout'
 
 const PageNotFound = () => {
   const styles = {
@@ -42,6 +43,7 @@ const PageNotFound = () => {
   };
 
   return (
+    <Layout title={"404 - Page Not Found"}>
     <div style={styles.container}>
       <div style={styles.content}>
         <h1 style={styles.title}>404</h1>
@@ -59,6 +61,7 @@ const PageNotFound = () => {
         </Link>
       </div>
     </div>
+    </Layout>
   );
 };
 

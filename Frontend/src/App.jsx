@@ -6,6 +6,7 @@ import Category from "../pages/Category";
 import Cart from "../pages/Cart";
 import Orders from "../pages/Orders";
 import Wishlist from "../pages/Wishlist";
+import Login from "../pages/Login";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/cart" element={<Cart/>} />
             <Route path="/orders" element={<Orders/>} />
             <Route path="/wishlist" element={<Wishlist/>} />
+            <Route path="/login" element={<Login/>} />
             <Route path="*" element={<PageNotFound/>} />
         </Routes>
         

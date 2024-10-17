@@ -14,7 +14,7 @@ const Category = () => {
   ];
 
   return (
-    <Layout>
+    <Layout title={"Shop by Category"}>
     <div className="container py-4">
       <div className="row justify-content-center">
         {categories.map((category) => (

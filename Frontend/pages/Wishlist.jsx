@@ -28,7 +28,7 @@ const Wishlist = () => {
   ];
 
   return (
-    <Layout>
+    <Layout title={"Wishlist"}>
     <div className="container mt-5">
       <h2 className="text-center mb-4">Your Wishlist</h2>
       <div className="row">

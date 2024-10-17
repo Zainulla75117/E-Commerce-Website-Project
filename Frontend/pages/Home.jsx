@@ -5,7 +5,7 @@ import Slider from '../src/components/Slider';
 const Home = () => {
   return (
     <>
-    <Layout>
+    <Layout title={"Shopswifty - Online Shoping Site - Home"}>
         <div><Slider/></div>
         
 

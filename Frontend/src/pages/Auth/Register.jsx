@@ -52,9 +52,10 @@ const Register = () => {
 
     console.log(import.meta.env.VITE_APP_API);
     return (
-        <Layout>
+        <Layout title={"Welcome • Shopswifty"}>
             <div className="bg-image d-flex justify-content-center align-items-center">
-                <div className="overlay row w-100">
+               <div className="overlay"></div>
+                <div className=" row w-100">
                     <div className="col-md-6 mx-auto d-flex justify-content-center align-items-center">
                         <div className="card shadow-lg">
                             <div className="card-body p-5">
@@ -165,7 +166,7 @@ const Register = () => {
                     }
 
                     .card {
-                        max-width: 400px;
+                        max-width: 500px;
                         width: 100%;
                         border-radius: 10px;
                         z-index: 1;

@@ -1,14 +1,17 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '../../components/Layout';
 import axios from 'axios';
+import { useAuth } from '../../context/auth';
 
 const Login = () => {
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
+
+    const {auth, setAuth} = useAuth();
 
     const navigate = useNavigate();
 
@@ -22,7 +25,6 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
             const res = await axios.post(
                 `${import.meta.env.VITE_APP_API}/api/v1/auth/login`,
@@ -31,17 +33,27 @@ const Login = () => {
                     password: formData.password,
                 }
             );
-
-            console.log('Login successful:', res.data);
-            navigate('/');
-            alert("Login Successfully")
+            
+            if (res && res.data.success) {
+                alert("Login Successfully");
+                setAuth({
+                    ...auth,
+                    user: res.data.user,
+                    token: res.data.token,
+                });
+                localStorage.setItem('auth', JSON.stringify(res.data));
+                navigate('/');
+            } else {
+                alert("Login Failed");
+            }
         } catch (error) {
             console.error('Login failed:', error);
+            alert("Wrong Username or Password. Please try again.");
         }
     };
 
     return (
-        <Layout>
+        <Layout title={"Welcome • Shopswifty"}>
             <div className="bg-image d-flex justify-content-center align-items-center">
                 <div className="overlay"></div>
                 <div className="row w-100">
@@ -57,20 +69,20 @@ const Login = () => {
                                         <input
                                             type="email"
                                             id="email"
-                                            name='email'
+                                            name="email"
                                             className="form-control"
                                             value={formData.email}
                                             onChange={handleInputChange}
                                             placeholder="Enter your email"
                                             required
-                                        />  
+                                        />
                                     </div>
                                     <div className="form-group mb-3">
                                         <label htmlFor="password">Password</label>
                                         <input
                                             type="password"
                                             id="password"
-                                            name='password'
+                                            name="password"
                                             className="form-control"
                                             value={formData.password}
                                             onChange={handleInputChange}

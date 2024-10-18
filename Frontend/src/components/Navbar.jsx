@@ -1,7 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '../context/auth';
 
 const Navbar = () => {
+    const { auth, setAuth } = useAuth();
+
+    const handleLogout = ()=> {
+        setAuth({
+        ...auth, user:null,token:''
+    }) 
+    localStorage.removeItem("auth") }
+
+
     return (
         <nav>
             <div className="brand">
@@ -23,10 +33,15 @@ const Navbar = () => {
                 <li><NavLink to="/cart">Cart <i className="fa-solid fa-cart-shopping"></i></NavLink></li>
                 <li><NavLink to="/orders">Orders <i className="fa-solid fa-box"></i></NavLink></li>
                 <li><NavLink to="/wishlist">Wishlist <i className="fa-solid fa-heart"></i></NavLink></li>
-                <li><NavLink to="/login">Login <i class="fa-solid fa-right-to-bracket"></i></NavLink></li>
+                
+                {!auth.user ? (
+                    <li><NavLink to="/login">Login <i className="fa-solid fa-right-to-bracket"></i></NavLink></li>
+                ) : (
+                    <li><NavLink onClick={handleLogout} to="/login">Logout <i className="fa-solid fa-right-to-bracket"></i></NavLink></li>
+                )}
             </ul>
         </nav>
     );
-}
+};
 
 export default Navbar;

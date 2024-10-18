@@ -5,7 +5,10 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm run dev --prefix ./frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "Zainullabideen",
@@ -13,6 +16,8 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "colors": "^1.4.0",
+    "concurrently": "^9.0.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "Ecom-Website": "file:",
     "express": "^4.21.1",
